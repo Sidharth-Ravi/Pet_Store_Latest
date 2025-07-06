@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Navbar</title>
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+  <style>
+    .navbar-custom {
+      background: linear-gradient(90deg, #007bff, #6610f2);
+      padding: 1rem 1.5rem;
+    }
+    .navbar-brand {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #fff !important;
+    }
+    .nav-link {
+      color: #fff !important;
+      font-size: 1.2rem;
+      margin-right: 1.2rem;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background-color: #ffc107; /* custom underline color (yellow) */
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    .nav-link:hover {
+      color: #ffd700 !important; /* gold on hover */
+    }
+    .user-info {
+      font-size: 1.2rem;
+      color: #f8f9fa;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+    }
+    .user-info i {
+      margin-right: 6px;
+      font-size: 1.4rem;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-custom shadow-sm">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/home">🐾 PetStore</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon text-white"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/viewcart">Cart</a>
+          </li>
+        </ul>
+
+        <!-- Right Side: User Info -->
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <span class="nav-link user-info">
+              <i class="bi bi-person-circle"></i> {{ request.user.username }}
+            </span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-warning" href="/logoutuser">
+              <i class="bi bi-box-arrow-right"></i> Logout
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <script src="/static/js/bootstrap.min.js"></script>
+  <script src="/static/js/popper.js"></script>
+</body>
+</html>

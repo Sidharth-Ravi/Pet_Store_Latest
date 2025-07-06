@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us</title>
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+  <style>
+    .section-title {
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    .highlight-box {
+      background-color: #f8f9fa;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 30px 20px;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  {% include 'navbar.html' %}
+
+  <div class="container py-5">
+    <h2 class="text-center text-primary section-title">About Us</h2>
+    <p class="text-center lh-lg">
+      We are committed to delivering high-quality products and services to our beloved pet community. 
+      Our mission is to ensure every pet receives the care they deserve through our wide range of accessories and supplies.
+    </p>
+  </div>
+
+  <div class="container py-4">
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="highlight-box text-center">
+          <h3 class="text-danger">Vision</h3>
+          <p class="lh-lg">
+            Our vision is to become the most trusted pet store, known for quality, care, and customer satisfaction. 
+            We aim to innovate in the pet industry and provide products that enhance pet health and happiness.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="highlight-box text-center">
+          <h3 class="text-info">Mission</h3>
+          <p class="lh-lg">
+            To serve every pet parent with love, commitment, and the best products. 
+            Our mission is to promote better living for pets and make every interaction with our store joyful and reliable.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container py-4">
+    <div class="row text-center">
+      <div class="col-md-4">
+        <div class="highlight-box">
+          <h2 class="text-info">2000+</h2>
+          <p class="fs-5">Orders Delivered</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="highlight-box">
+          <h2 class="text-info">1000+</h2>
+          <p class="fs-5">Happy Customers</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="highlight-box">
+          <h2 class="text-info">4000+</h2>
+          <p class="fs-5">Products</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/js/bootstrap.min.js"></script>
+  <script src="/static/js/popper.min.js"></script>
+
+  {% include 'footer.html' %}
+</body>
+</html>
