@@ -1,0 +1,1 @@
+PetStore is your trusted place for pet essentials. We offer food, toys, grooming products, and more for dogs, cats, and birds. With easy ordering, fast delivery, and secure payments, caring for your pet has never been easier. Quality products, simple service — because pets are family.
