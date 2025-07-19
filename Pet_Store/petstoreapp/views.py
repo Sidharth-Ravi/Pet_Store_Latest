@@ -9,6 +9,7 @@ import random
 import razorpay
 from django.core.mail import send_mail
 
+
 # Registration
 def register(request):
     context = {}
@@ -135,28 +136,53 @@ def updateqty(request, qv, cid):
 @login_required(login_url='/login')
 def placeorder(request):
     c = Cart.objects.filter(uid=request.user.id)
+    if not c.exists():
+        return HttpResponse("Cart is empty.")
+
     oid = random.randrange(1000, 9999)
+    
     for x in c:
         Order.objects.create(order_id=oid, pid=x.pid, uid=x.uid, qty=x.qty)
         x.delete()
-    orders = Order.objects.filter(uid=request.user.id)
+
+    request.session['last_oid'] = oid
+
+    orders = Order.objects.filter(uid=request.user.id, order_id=oid)
     total = sum(x.pid.pcost * x.qty for x in orders)
+
     return render(request, 'place_order.html', {
         'Products': orders,
         'total': total,
         'n': len(orders)
     })
 
+
 # Make Payment
 @login_required(login_url='/login')
 def makepayment(request):
-    orders = Order.objects.filter(uid=request.user.id)
+    oid = request.session.get('last_oid')
+    if not oid:
+        return HttpResponse("No recent order found.")
+
+    orders = Order.objects.filter(uid=request.user.id, order_id=oid)
     total = sum(x.pid.pcost * x.qty for x in orders)
-    oid = orders.first().order_id if orders else "NA"
+
+    if total <= 0:
+        return HttpResponse("Invalid total amount for payment.")
+
+    # Razorpay integration
     client = razorpay.Client(auth=("rzp_test_zdLBYxuK3Df0nN", "EoumSuSCNCWACMksHl3pTzD1"))
-    data = {"amount": total * 100, "currency": "INR", "receipt": str(oid)}
+    data = {
+        "amount": int(total * 100),  
+        "currency": "INR",
+        "receipt": str(oid)
+    }
     payment = client.order.create(data=data)
-    return render(request, "pay.html", {'data': payment, 'amt': total * 100})
+
+    return render(request, "pay.html", {
+        'data': payment,
+        'amt': int(total * 100)
+    })
 
 # Send Mail
 @login_required(login_url='/login')
@@ -165,7 +191,7 @@ def sendusermail(request):
     send_mail(
         "Ekart order placed successfully!",
         "Order details are:",
-        "s4sidharth@gmail.com",
+        "s4sidhartholiyatholiyath@gmail.com",
         [uemail],
         fail_silently=False,
     )

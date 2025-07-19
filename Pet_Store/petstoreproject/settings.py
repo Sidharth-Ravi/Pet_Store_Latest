@@ -29,13 +29,13 @@ ALLOWED_HOSTS = []
 
 # #Email settings
 # EMAIL_HOST="smtp.gmail.com"
-# # my mail id
+# # # my mail id
 # EMAIL_HOST_USER="s4sidhartholiyath@gmail.com"
-# # here i have added my gmail app password
-# EMAIL_HOST_PASSWORD="ldfe kbfz iqob vxia"
-EMAIL_HOST_PORT=587
-EMAIL_USE_TLS=True
-EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
+# # # here i have added my gmail app password
+# EMAIL_HOST_PASSWORD="ldfekbfziqobvxia"
+# EMAIL_HOST_PORT=587
+# EMAIL_USE_TLS=True
+# EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
 # Application definition
 
 INSTALLED_APPS = [
