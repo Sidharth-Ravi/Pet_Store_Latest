@@ -165,7 +165,7 @@ def sendusermail(request):
     send_mail(
         "Ekart order placed successfully!",
         "Order details are:",
-        "anshusayare@gmail.com",
+        "s4sidharth@gmail.com",
         [uemail],
         fail_silently=False,
     )
